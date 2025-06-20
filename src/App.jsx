@@ -17,7 +17,7 @@ class App extends React.Component{
   dataHandler(){
     this.setState((prevState)=>{
       const newFlag=!prevState.flag
-      const newText=newFlag ? "Class Component" : "Functional Component"
+      const newText=newFlag ? "Class Components" : "Functional Components"
 
       return {flag:newFlag,
               text:newText
