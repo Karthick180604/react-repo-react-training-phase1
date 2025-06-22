@@ -6,15 +6,23 @@ class Signup extends React.Component{
         this.name=React.createRef()
         this.email=React.createRef()
         this.password=React.createRef()
-        this.handler=this.handler.bind(this)
+        this.signupHandler=this.signupHandler.bind(this)
     }
-    handler=()=>{
+    signupHandler=(e)=>{
+        e.preventDefault()
         const obj={
             name:this.name.current.value,
             email:this.email.current.value,
             password:this.password.current.value
         }
         this.props.onSignup(obj)
+        this.name.current.value=""
+        this.email.current.value=""
+        this.password.current.value=""
+    }
+    loginRequest=(e)=>{
+        e.preventDefault()
+        this.props.loginOrSignup()
     }
     render(){
         const formFields=[
@@ -24,21 +32,26 @@ class Signup extends React.Component{
         ]
         return<>
         <h1>Sign up</h1>
-        {
-            formFields.map(({name, label, type, placeholder, ref}, index)=>(
-                <div key={index}>
-                    <input
-                    name={name}
-                    label={label}
-                    type={type}
-                    placeholder={placeholder}
-                    ref={ref}
-                    >
-                    </input>
-                </div>
-            ))
-        }
-        <button onClick={()=>this.handler()}>Sign Up</button>
+        <form onSubmit={this.signupHandler}>
+            {
+                formFields.map(({name, label, type, placeholder, ref}, index)=>{
+                    return <div key={index}>
+                        <input
+                        name={name}
+                        label={label}
+                        type={type}
+                        placeholder={placeholder}
+                        ref={ref}
+                        required
+                        >
+                        </input>
+                    </div>
+                })
+            }
+            <button type='submit'>Sign Up</button>
+            <button onClick={this.loginRequest}>Login</button>
+
+        </form>
         </>
     }
 }
