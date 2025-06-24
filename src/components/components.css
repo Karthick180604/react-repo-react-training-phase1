@@ -1,6 +1,15 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.login{
+    height: 60%;
+}
+.signup{
+    height: 65%;
+}
 .auth-container{
     width:40%;
-    height: 50%;
     border:2px solid limegreen;
     border-radius: 5px;
     display: flex;
@@ -13,21 +22,60 @@
 }
 .auth-form-container{
     height: 70%;
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .auth-form{
     height:100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .auth-input{
     height: 30px;
+    width: 80%;
     border: none;
     border-bottom: 3px solid limegreen;
     background-color: rgb(235, 227, 227);
     border-radius: 3px;
+}
+.auth-form-inside{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.auth-button{
+    width: 60%;
+    height: 30px;
+    border-radius: 10px;
+    background-color:white;
+    color: limegreen;
+    border: 2px solid limegreen;
+    cursor: pointer;
+}
+.form-error{
+    color:red
+}
+
+@media(max-width:1440px){
+    .auth-container{
+        width: 30%;
+    }
+}
+@media(max-width:1024px){
+    .auth-container{
+        width: 50%;
+    }
+}
+@media(max-width:600px){
+    .auth-container{
+        width: 60%;
+    }
 }

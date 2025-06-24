@@ -1,13 +1,20 @@
-import React from 'react'
+import React from "react";
 
-class Home extends React.Component{
-    render(){
-        return(
-            <>
-            <h1>Welcome {this.props.userName}</h1>
-            </>
-        )
-    }
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  logoutHandler = () => {
+    this.props.onLogout();
+  };
+  render() {
+    return (
+      <>
+        <h1>Welcome {this.props.userName}</h1>
+        <button onClick={this.logoutHandler}>Logout</button>
+      </>
+    );
+  }
 }
 
-export default Home
+export default Home;
