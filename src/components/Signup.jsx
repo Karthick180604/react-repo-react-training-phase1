@@ -5,10 +5,13 @@ import LoginIcon from "@mui/icons-material/Login";
 class Signup extends React.Component {
   constructor(props) {
     super(props);
-    this.name = React.createRef();
-    this.email = React.createRef();
-    this.password = React.createRef();
+    // this.name = React.createRef();
+    // this.email = React.createRef();
+    // this.password = React.createRef();
     this.state = {
+      userName:"",
+      userEmail:"",
+      userPassword:"",
       nameError: false,
       emailError: false,
       passwordError: false,
@@ -18,15 +21,16 @@ class Signup extends React.Component {
   signupHandler = (e) => {
     e.preventDefault();
     const obj = {
-      name: this.name.current.value,
-      email: this.email.current.value,
-      password: this.password.current.value,
+      name: this.state.userName,
+      email: this.state.userEmail,
+      password: this.state.userPassword,
     };
-    console.log("signuphandler", this.name);
     this.props.onSignup(obj);
-    this.name.current.value = "";
-    this.email.current.value = "";
-    this.password.current.value = "";
+    this.setState({
+      userName:"",
+      userEmail:"",
+      userPassword:""
+    })
   };
   loginRequest = (e) => {
     e.preventDefault();
@@ -35,14 +39,17 @@ class Signup extends React.Component {
 
   onInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === "user-email") {
+    this.setState({
+      [name]:value
+    })
+    if (name === "userEmail") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const test = emailRegex.test(value);
       this.setState((prevState) => {
         return { emailError: !test };
       });
     }
-    if (name === "user-password") {
+    if (name === "userPassword") {
       const valid = value.length >= 8;
       this.setState((prevState) => {
         return { passwordError: !valid };
@@ -64,29 +71,29 @@ class Signup extends React.Component {
   render() {
     const formFields = [
       {
-        name: "user-name",
+        name: "userName",
         label: "Name",
         type: "text",
         placeholder: "Enter your name",
-        ref: this.name,
+        value: this.state.userName,
         error: "Enter valid name",
         errorState: this.state.nameError,
       },
       {
-        name: "user-email",
+        name: "userEmail",
         label: "Email",
         type: "email",
         placeholder: "Enter your email",
-        ref: this.email,
+        value: this.state.userEmail,
         error: "Enter valid email",
         errorState: this.state.emailError,
       },
       {
-        name: "user-password",
+        name: "userPassword",
         label: "Password",
         type: "password",
         placeholder: "Enter your password",
-        ref: this.password,
+        value: this.state.userPassword,
         error: "Minimum length should be 8",
         errorState: this.state.passwordError,
       },
@@ -101,7 +108,7 @@ class Signup extends React.Component {
             <form className="auth-form" onSubmit={this.signupHandler}>
               {formFields.map(
                 (
-                  { name, label, type, placeholder, ref, error, errorState },
+                  { name, label, type, placeholder, value, error, errorState },
                   index,
                 ) => {
                   return (
@@ -111,7 +118,7 @@ class Signup extends React.Component {
                         label={label}
                         type={type}
                         placeholder={placeholder}
-                        ref={ref}
+                        value={value}
                         // className='auth-input'
                         variant="standard"
                         sx={{

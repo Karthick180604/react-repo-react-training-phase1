@@ -63,6 +63,23 @@
 .form-error{
     color:red
 }
+.activity-container{
+    display: flex;
+    justify-content: space-around;
+}
+.activity-button-container{
+    width: 40%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.activity-display-container{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
 @media(max-width:1440px){
     .auth-container{

@@ -10,7 +10,7 @@ class Authentication extends React.Component {
     this.state = {
       users: [],
       login: true,
-      userLogin: false,
+      userLogin: true,
       currentUser: {},
     };
     this.onSignup = this.onSignup.bind(this);
