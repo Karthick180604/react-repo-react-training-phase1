@@ -70,7 +70,8 @@
 .activity-button-container{
     width: 40%;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 .activity-display-container{

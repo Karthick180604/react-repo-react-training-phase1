@@ -18,7 +18,7 @@ const ModeDialogBox = ({dialogValue, dialogOpen, handleDialogClose}) => {
             {
                 mode.map((data, index)=>(
                     <ListItem key={index}>
-                        <ListItemButton onClick={(data)=>handleClickedItem(data)}>
+                        <ListItemButton onClick={()=>handleClickedItem(data)}>
                             <ListItemText primary={data}/>
                         </ListItemButton>
                     </ListItem>

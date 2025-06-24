@@ -39,6 +39,7 @@ const ActivityPagination=()=>{
     const handleDialogClose=(value)=>{
         setDialogOpen(false)
         setDialogValue(value)
+        console.log(dialogValue)
     }
     return(
         <>
