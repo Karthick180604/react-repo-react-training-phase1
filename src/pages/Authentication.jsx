@@ -5,19 +5,13 @@ import Home from "./Home";
 import "./pages.css";
 import { useNavigate } from "react-router-dom";
 
-const FunctionalWrapper=(Authentication)=>{
-  const Wrapper=(props)=>{
-    const navigate=useNavigate()
-    return(
-      <Authentication
-      {...props}
-      navigate={navigate}
-      />
-    )
-  }
-  return Wrapper
-
-}
+const FunctionalWrapper = (Authentication) => {
+  const Wrapper = (props) => {
+    const navigate = useNavigate();
+    return <Authentication {...props} navigate={navigate} />;
+  };
+  return Wrapper;
+};
 
 class Authentication extends React.Component {
   constructor(props) {
@@ -61,8 +55,8 @@ class Authentication extends React.Component {
     const validUser = !!user;
     if (validUser) {
       console.log("Home page");
-      localStorage.setItem("user",user.email)
-      this.props.navigate(`/home/${user.email}`)
+      localStorage.setItem("user", user.email);
+      this.props.navigate(`/home/${user.email}`);
       this.setState((prevState) => {
         return { userLogin: true, currentUser: user };
       });
@@ -84,23 +78,20 @@ class Authentication extends React.Component {
     //     <Home userName={this.state.currentUser.name} onLogout={this.onLogout} />
     //   );
     // } else {
-      return (
-        <>
-          <div className="container">
-            {this.state.login ? (
-              <Login
-                loginOrSignup={this.loginOrSignup}
-                onLogin={this.onLogin}
-              />
-            ) : (
-              <Signup
-                loginOrSignup={this.loginOrSignup}
-                onSignup={this.onSignup}
-              />
-            )}
-          </div>
-        </>
-      );
+    return (
+      <>
+        <div className="container">
+          {this.state.login ? (
+            <Login loginOrSignup={this.loginOrSignup} onLogin={this.onLogin} />
+          ) : (
+            <Signup
+              loginOrSignup={this.loginOrSignup}
+              onSignup={this.onSignup}
+            />
+          )}
+        </div>
+      </>
+    );
   }
 }
 export default FunctionalWrapper(Authentication);

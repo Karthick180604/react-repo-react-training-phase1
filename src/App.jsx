@@ -6,10 +6,9 @@ import { createTheme, ThemeProvider } from "@mui/material";
 
 class App extends React.Component {
   render() {
-    
     return (
       <>
-          <Authentication />
+        <Authentication />
       </>
     );
   }

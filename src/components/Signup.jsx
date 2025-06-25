@@ -9,9 +9,9 @@ class Signup extends React.Component {
     // this.email = React.createRef();
     // this.password = React.createRef();
     this.state = {
-      userName:"",
-      userEmail:"",
-      userPassword:"",
+      userName: "",
+      userEmail: "",
+      userPassword: "",
       nameError: false,
       emailError: false,
       passwordError: false,
@@ -27,10 +27,10 @@ class Signup extends React.Component {
     };
     this.props.onSignup(obj);
     this.setState({
-      userName:"",
-      userEmail:"",
-      userPassword:""
-    })
+      userName: "",
+      userEmail: "",
+      userPassword: "",
+    });
   };
   loginRequest = (e) => {
     e.preventDefault();
@@ -40,8 +40,8 @@ class Signup extends React.Component {
   onInputChange = (e) => {
     const { name, value } = e.target;
     this.setState({
-      [name]:value
-    })
+      [name]: value,
+    });
     if (name === "userEmail") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const test = emailRegex.test(value);

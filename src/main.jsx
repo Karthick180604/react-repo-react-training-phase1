@@ -11,34 +11,42 @@ import ProtectedRoutes from "./components/ProtectedRoutes.jsx";
 import ListOfTask from "./components/ListOfTask.jsx";
 import ActivityPagination from "./components/ActivityPagination.jsx";
 
-const router=createBrowserRouter([
+const router = createBrowserRouter([
   {
-    path:"/",
-    element:<App />
+    path: "/",
+    element: <App />,
   },
   {
-    path:"/home/:useremail",
-    element:<ProtectedRoutes><Home /></ProtectedRoutes>,
-    children:[
-      {path:"tasks",element:<ListOfTask/>},
-      {path:"activitylist", element:<ActivityPagination />}
-    ]
+    path: "/home/:useremail",
+    element: (
+      <ProtectedRoutes>
+        <Home />
+      </ProtectedRoutes>
+    ),
+    children: [
+      { path: "tasks", element: <ListOfTask /> },
+      { path: "activitylist", element: <ActivityPagination /> },
+    ],
   },
   {
-    path:"/activity",
-    element:<ProtectedRoutes><Activity /></ProtectedRoutes>
-  }
-])
+    path: "/activity",
+    element: (
+      <ProtectedRoutes>
+        <Activity />
+      </ProtectedRoutes>
+    ),
+  },
+]);
 const theme = createTheme({
-      palette: {
-        primary: {
-          main: "#32CD32",
-        },
-        secondary: {
-          main: "#800080",
-        },
-      },
-    });
+  palette: {
+    primary: {
+      main: "#32CD32",
+    },
+    secondary: {
+      main: "#800080",
+    },
+  },
+});
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
