@@ -3,6 +3,21 @@ import Login from "../components/Login";
 import Signup from "../components/Signup";
 import Home from "./Home";
 import "./pages.css";
+import { useNavigate } from "react-router-dom";
+
+const FunctionalWrapper=(Authentication)=>{
+  const Wrapper=(props)=>{
+    const navigate=useNavigate()
+    return(
+      <Authentication
+      {...props}
+      navigate={navigate}
+      />
+    )
+  }
+  return Wrapper
+
+}
 
 class Authentication extends React.Component {
   constructor(props) {
@@ -10,7 +25,7 @@ class Authentication extends React.Component {
     this.state = {
       users: [],
       login: true,
-      userLogin: true,
+      userLogin: false,
       currentUser: {},
     };
     this.onSignup = this.onSignup.bind(this);
@@ -46,6 +61,8 @@ class Authentication extends React.Component {
     const validUser = !!user;
     if (validUser) {
       console.log("Home page");
+      localStorage.setItem("user",user.email)
+      this.props.navigate(`/home/${user.email}`)
       this.setState((prevState) => {
         return { userLogin: true, currentUser: user };
       });
@@ -62,11 +79,11 @@ class Authentication extends React.Component {
     });
   };
   render() {
-    if (this.state.userLogin) {
-      return (
-        <Home userName={this.state.currentUser.name} onLogout={this.onLogout} />
-      );
-    } else {
+    // if (this.state.userLogin) {
+    //   return (
+    //     <Home userName={this.state.currentUser.name} onLogout={this.onLogout} />
+    //   );
+    // } else {
       return (
         <>
           <div className="container">
@@ -84,10 +101,9 @@ class Authentication extends React.Component {
           </div>
         </>
       );
-    }
   }
 }
-export default Authentication;
+export default FunctionalWrapper(Authentication);
 
 // components
 // - /Form - formFields, callback
