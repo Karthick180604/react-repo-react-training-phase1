@@ -10,6 +10,7 @@ import Activity from "./pages/Activity.jsx";
 import ProtectedRoutes from "./components/ProtectedRoutes.jsx";
 import ListOfTask from "./components/ListOfTask.jsx";
 import ActivityPagination from "./components/ActivityPagination.jsx";
+import Data from "./pages/Data.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       </ProtectedRoutes>
     ),
   },
+  {
+    path:"/data",
+    element:<Data />
+  }
 ]);
 const theme = createTheme({
   palette: {

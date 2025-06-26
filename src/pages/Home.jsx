@@ -6,8 +6,9 @@ import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 const FunctionalWrapper = (Home) => {
   const Wrapper = (props) => {
     const navigate = useNavigate();
-    const { useremail } = useParams();
-    return <Home {...props} email={useremail} navigate={navigate} />;
+    const url = useParams();
+    console.log(url)
+    return <Home {...props} email={url.useremail} navigate={navigate} />;
   };
   return Wrapper;
 };

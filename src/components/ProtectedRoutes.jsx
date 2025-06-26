@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 const ProtectedRoutes = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const {useremail}=useParams()
 
   useEffect(() => {
     const getUser = localStorage.getItem("user");
-    const isAuthenticated = !!getUser;
+    const isAuthenticated = getUser===useremail;
     setLoading(false);
     setAuthenticated(isAuthenticated);
   }, []);

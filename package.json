@@ -17,6 +17,7 @@
     "@mui/material": "^6.4.12",
     "@mui/x-data-grid": "^8.5.3",
     "@mui/x-date-pickers": "^8.5.3",
+    "axios": "^1.10.0",
     "dayjs": "^1.11.13",
     "prettier": "^3.6.0",
     "react": "^19.1.0",
