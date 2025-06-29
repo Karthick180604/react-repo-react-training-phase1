@@ -4,6 +4,7 @@ import Signup from "../components/Signup";
 import Home from "./Home";
 import "./pages.css";
 import { useNavigate } from "react-router-dom";
+import Welcome from "../components/Welcome";
 
 const FunctionalWrapper = (Authentication) => {
   const Wrapper = (props) => {
@@ -82,14 +83,16 @@ class Authentication extends React.Component {
       <>
         <div className="container">
           {this.state.login ? (
-            <Login loginOrSignup={this.loginOrSignup} onLogin={this.onLogin} />
+            <Welcome><Login loginOrSignup={this.loginOrSignup} onLogin={this.onLogin} /></Welcome>
           ) : (
-            <Signup
+            <Welcome><Signup
               loginOrSignup={this.loginOrSignup}
               onSignup={this.onSignup}
-            />
+            /></Welcome>
+            
           )}
         </div>
+        
       </>
     );
   }

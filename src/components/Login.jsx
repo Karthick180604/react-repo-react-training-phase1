@@ -103,10 +103,7 @@ class Login extends React.Component {
               <Button
                 variant="outlined"
                 startIcon={<LoginIcon />}
-                sx={{
-                  borderColor: "limegreen",
-                  color: "limegreen",
-                }}
+                color="secondary"
                 type="submit"
               >
                 Login

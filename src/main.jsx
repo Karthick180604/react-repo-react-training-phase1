@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       </ProtectedRoutes>
     ),
     children: [
-      { path: "tasks", element: <ListOfTask /> },
+      { index: true, element: <ListOfTask /> },
       { path: "activitylist", element: <ActivityPagination /> },
     ],
   },
@@ -48,7 +48,7 @@ const theme = createTheme({
       main: "#32CD32",
     },
     secondary: {
-      main: "#800080",
+      main: "#222222",
     },
   },
 });
